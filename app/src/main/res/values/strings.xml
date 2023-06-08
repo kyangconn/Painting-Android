@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">AndroidPainting</string>
+    <string name="content_color">Color</string>
+    <string name="content_erase">Erase</string>
+    <string name="red_chosen">red_chosen</string>
+    <string name="green_chosen">green_chosen</string>
+    <string name="blue_chosen">blue_chosen</string>
+    <string name="func_clear">Clear</string>
+    <string name="Main_Toolbar">Painting</string>
+    <string name="size_chosen">choose paint size</string>
+</resources>
