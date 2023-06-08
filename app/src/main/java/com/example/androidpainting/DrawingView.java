@@ -33,7 +33,7 @@ public class DrawingView extends View {
         drawPaint.setStrokeJoin(Paint.Join.ROUND);
         drawPaint.setStrokeCap(Paint.Cap.ROUND);
 
-        canvasPaint = new Paint(Paint.DITHER_FLAG); // DITHER_FLAG 用于抖动，可以增加颜色的深度和质量
+        canvasPaint = new Paint(Paint.DITHER_FLAG);
     }
 
     // 测量视图大小，初始化我们的 Bitmap 和画布

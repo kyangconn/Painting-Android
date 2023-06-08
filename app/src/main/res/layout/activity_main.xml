@@ -128,7 +128,12 @@
             android:value="20"
             android:valueFrom="1"
             android:valueTo="50"
+<<<<<<< HEAD
             app:thumbColor="@color/black" />
+=======
+            app:thumbColor="@color/black"
+            app:trackcolor="@color/black"/>
+>>>>>>> 59b6cd8 (Initial commit)
     </LinearLayout>
 
     <Button
