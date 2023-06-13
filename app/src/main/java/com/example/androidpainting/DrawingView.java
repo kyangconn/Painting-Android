@@ -11,19 +11,18 @@ import android.view.MotionEvent;
 import android.view.View;
 
 public class DrawingView extends View {
-    private Path drawPath; // 用于追踪用户触摸屏幕的路径
-    private Paint drawPaint, canvasPaint; // 画笔和画布的画笔（用于显示绘画）
-    private int paintColor = Color.BLACK; // 初始画笔颜色（黑色）
-    private Canvas drawCanvas; // 内部的画布，实际的绘画都在这里进行
-    private Bitmap canvasBitmap; // 在绘制过程中，我们的绘制会先在这个 Bitmap 上进行
+    private Path drawPath;
+    private Paint drawPaint, canvasPaint;
+    private int paintColor = Color.BLACK;
+    private Canvas drawCanvas;
+    private Bitmap canvasBitmap;
 
     public DrawingView(Context context, AttributeSet attrs){
         super(context, attrs);
         setupDrawing();
     }
 
-    // 设置和初始化绘画工具
-    private void setupDrawing(){
+    private void setupDrawing(){//initial everything used to draw
         drawPath = new Path();
         drawPaint = new Paint();
         drawPaint.setColor(paintColor);
@@ -36,22 +35,19 @@ public class DrawingView extends View {
         canvasPaint = new Paint(Paint.DITHER_FLAG);
     }
 
-    // 测量视图大小，初始化我们的 Bitmap 和画布
     @Override
-    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {//initial the canvas
         super.onSizeChanged(w, h, oldw, oldh);
         canvasBitmap = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
         drawCanvas = new Canvas(canvasBitmap);
     }
 
-    // 在这个视图上画一个路径
     @Override
-    protected void onDraw(Canvas canvas) {
+    protected void onDraw(Canvas canvas) {//draw the path on canvas
         canvas.drawBitmap(canvasBitmap, 0, 0, canvasPaint);
         canvas.drawPath(drawPath, drawPaint);
     }
 
-    // 捕获用户触摸事件并将其转换为绘图路径
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         float touchX = event.getX();
@@ -80,26 +76,23 @@ public class DrawingView extends View {
         return super.performClick();
     }
 
-    // 更改画笔颜色
-    public void setPaintColor(int newColor) {
+    public void setPaintColor(int newColor) {//set the color of the paint
         invalidate();
         paintColor = newColor;
         drawPaint.setColor(paintColor);
     }
 
-    public void setPaintSize(int newSize) {
+    public void setPaintSize(int newSize) {//set the size of the paint
         invalidate();
         drawPaint.setStrokeWidth(newSize);
     }
 
-    // 清屏功能
-    public void clear() {
+    public void clear() { //clear the screen
         drawCanvas.drawColor(Color.WHITE);
         invalidate();
     }
 
-    // 橡皮擦功能
     public void setErase() {
         drawPaint.setColor(Color.WHITE);
-    }
+    }//use for erase the paint previous.
 }
