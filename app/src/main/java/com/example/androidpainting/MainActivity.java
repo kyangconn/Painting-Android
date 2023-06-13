@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         com.example.androidpainting.databinding.ActivityMainBinding binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         setSupportActionBar(binding.toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("");//set toolbar to none for the title.
 
         drawingView = findViewById(R.id.drawing_view);
         colorPopup = findViewById(R.id.popup_color);
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         Slider redSlider = findViewById(R.id.red_slider);
         Slider greenSlider = findViewById(R.id.green_slider);
         Slider blueSlider = findViewById(R.id.blue_slider);
-        Slider sizeSlider = findViewById(R.id.size_slider);
+        Slider sizeSlider = findViewById(R.id.size_slider);//set the control to variables.
 
         Slider.OnChangeListener listener = (slider, value, fromUser) -> {
             int buttonRed = (int) redSlider.getValue();
@@ -45,12 +45,12 @@ public class MainActivity extends AppCompatActivity {
 
             drawingView.setPaintColor(buttonColor);
             color.setBackgroundTintList(ColorStateList.valueOf(buttonColor));
-        };
+        };//set the listener for color sliders.
 
         sizeSlider.addOnChangeListener((slider, value, fromUser) -> {
             int paintSize = (int) sizeSlider.getValue();
             drawingView.setPaintSize(paintSize);
-        });
+        });//set the listener for the size changer.
 
         redSlider.addOnChangeListener(listener);
         greenSlider.addOnChangeListener(listener);
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         clear.setOnClickListener(view -> drawingView.clear());
     }
 
-    private void popupColor() {
+    private void popupColor() {//with no popup dialog to show and dismiss the color sliders and size sliders
         if (colorPopup.getVisibility() == View.GONE)
             colorPopup.setVisibility(View.VISIBLE);
         else
