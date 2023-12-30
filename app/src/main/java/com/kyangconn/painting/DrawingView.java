@@ -1,4 +1,4 @@
-package com.example.androidpainting;
+package com.kyangconn.painting;
 
 import android.content.Context;
 import android.graphics.Bitmap;
